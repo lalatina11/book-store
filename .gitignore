@@ -73,3 +73,8 @@ typings/
 .serverless
 
 dist
+
+pnpm*
+yarn*
+bun*
+package-lock*
