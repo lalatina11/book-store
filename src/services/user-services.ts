@@ -1,4 +1,4 @@
-import { hashSync } from "bcrypt-ts";
+import bcrypt from "bcryptjs";
 
 import type { UserFields } from "../types/index.js";
 
@@ -14,7 +14,8 @@ const UserServices = {
     if (!regexPassword.test(passwordFromInput)) {
       throw new Error("Password must have at least one number and one special character!");
     }
-    const password = hashSync(passwordFromInput, 10);
+    const salt = await bcrypt.genSalt(10);
+    const password = bcrypt.hashSync(passwordFromInput, salt);
     const avatar = `https://api.dicebear.com/9.x/adventurer/svg?seed=${username}`;
     const { password: pass, ...allUserInformationWithoutPassword } = await UserRepositories.create({
       username,
