@@ -4,6 +4,7 @@ import emailValidator from "email-validator";
 
 import type { UserFields } from "../types/index.js";
 
+import { dbConnect } from "../db/index.js";
 import UserRepositories from "../repositories/user-repositories.js";
 import AuthService from "../services/auth-services.js";
 import UserServices from "../services/user-services.js";
@@ -76,6 +77,7 @@ const AuthController = {
   },
   signIn: async (req: Request, res: Response) => {
     try {
+      await dbConnect()
       const { identifier, password } = req.body as UserFields & { identifier: string };
       const user = await AuthService.checkCredentials({ identifier, password });
       const token = AuthService.generateToken(user._id.toString());
