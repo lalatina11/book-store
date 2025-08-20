@@ -1,10 +1,10 @@
 import app from "./app.js";
-import { DbConnection } from "./db/index.js";
+// import { DbConnection } from "./db/index.js";
 import { ENV } from "./env.js";
 
 const port = ENV.PORT;
 const server = app.listen(port, async () => {
-  await DbConnection();
+  // await DbConnection();
   /* eslint-disable no-console */
   console.log(`Listening: http://localhost:${port}`);
   /* eslint-enable no-console */
