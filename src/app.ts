@@ -3,8 +3,6 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 
-import type MessageResponse from "./interfaces/message-response.js";
-
 import api from "./api/index.js";
 import * as middlewares from "./middlewares.js";
 import AuthRouter from "./router/auth-router.js";
