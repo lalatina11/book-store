@@ -2,7 +2,18 @@ import type { NextFunction, Request, Response } from "express";
 
 import type ErrorResponse from "./interfaces/error-response.js";
 
+import { dbConnect } from "./db/index.js";
 import { ENV } from "./env.js";
+
+export async function runDB(req: Request, res: Response, next: NextFunction) {
+  const url = new URL(req.url);
+  if (url.pathname.startsWith("/api")) {
+    // eslint-disable-next-line no-console
+    console.log("middleware hit");
+    await dbConnect();
+  }
+  next();
+}
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
