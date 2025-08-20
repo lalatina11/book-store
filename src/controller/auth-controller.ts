@@ -12,6 +12,7 @@ import UserServices from "../services/user-services.js";
 const AuthController = {
   getCurrentUser: async (req: Request, res: Response) => {
     try {
+      await dbConnect();
       res.status(200).json({ error: false, message: "Successfully Current User" });
     }
     catch (err) {
@@ -22,6 +23,7 @@ const AuthController = {
   },
   signUp: async (req: Request, res: Response) => {
     try {
+      await dbConnect();
       const { username, email, password } = await req.body as UserFields;
       if (!username && !password && !email) {
         throw new Error("Needs all required fields!");
@@ -77,7 +79,7 @@ const AuthController = {
   },
   signIn: async (req: Request, res: Response) => {
     try {
-      await dbConnect()
+      await dbConnect();
       const { identifier, password } = req.body as UserFields & { identifier: string };
       const user = await AuthService.checkCredentials({ identifier, password });
       const token = AuthService.generateToken(user._id.toString());
