@@ -7,7 +7,7 @@ import type MessageResponse from "./interfaces/message-response.js";
 
 import api from "./api/index.js";
 import * as middlewares from "./middlewares.js";
-import AuthRouter from "./router/auth-router.js"
+import AuthRouter from "./router/auth-router.js";
 
 const app = express();
 
@@ -15,11 +15,12 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use('/api/auth', AuthRouter)
+app.use("/api/auth", AuthRouter);
 
-app.get<object, MessageResponse>("/", (req, res) => {
+app.get("/", (_, res) => {
   res.json({
-    message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
+    error: false,
+    message: "IT IS WORK, YOU DID IT!",
   });
 });
 
