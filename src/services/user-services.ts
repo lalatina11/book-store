@@ -46,6 +46,13 @@ const UserServices = {
     const { password, ...allUserInformationWithoutPassword } = user;
     return allUserInformationWithoutPassword;
   },
+  findUserById: async (id: string) => {
+    const user = await UserRepositories.findById(id);
+    if (!user)
+      return null;
+    const { password, ...allUserInformationWithoutPassword } = user;
+    return allUserInformationWithoutPassword;
+  },
 };
 
 export default UserServices;
