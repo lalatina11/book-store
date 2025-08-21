@@ -13,7 +13,13 @@ const AuthController = {
   getCurrentUser: async (req: Request, res: Response) => {
     try {
       await dbConnect();
-      res.status(200).json({ error: false, message: "Successfully Current User" });
+      const token = req.headers.token as string;
+      if (!token) {
+        throw new Error("Token are required");
+      }
+      const user = await AuthService.getCurrentUser(token);
+
+      res.status(200).json({ error: false, data: { user }, message: "Successfully Current User" });
     }
     catch (err) {
       // eslint-disable-next-line no-console
