@@ -6,6 +6,7 @@ import morgan from "morgan";
 import api from "./api/index.js";
 import * as middlewares from "./middlewares.js";
 import AuthRouter from "./router/auth-router.js";
+import BookRouter from "./router/book-router.js";
 
 const app = express();
 
@@ -13,7 +14,9 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
 app.use("/api/auth", AuthRouter);
+app.use("/api/book", BookRouter);
 
 app.get("/", (_, res) => {
   res.json({
