@@ -10,7 +10,7 @@ const UserRepositories = {
     return user.toObject();
   },
   findById: async (id: string) => {
-    const user = await User.findById({ id });
+    const user = await User.findById({ _id: id });
     if (!user)
       return null;
     return user.toObject();
