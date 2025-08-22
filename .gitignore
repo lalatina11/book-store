@@ -78,3 +78,6 @@ pnpm*
 yarn*
 bun*
 package-lock*
+
+#IDE
+.idea
