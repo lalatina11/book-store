@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 
-import type { UserFields } from "../types/index.js";
+import type { UserFields } from "../types/fields.js";
 
 import UserRepositories from "../repositories/user-repositories.js";
 

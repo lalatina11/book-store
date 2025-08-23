@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 
 import emailValidator from "email-validator";
 
-import type { UserFields } from "../types/index.js";
+import type { UserFields } from "../types/fields.js";
 
 import { dbConnect } from "../db/index.js";
 import UserRepositories from "../repositories/user-repositories.js";

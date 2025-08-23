@@ -3,7 +3,7 @@ import type { JwtPayload } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import type { UserFields } from "../types/index.js";
+import type { UserFields } from "../types/fields.js";
 
 import { ENV } from "../env.js";
 import UserRepositories from "../repositories/user-repositories.js";

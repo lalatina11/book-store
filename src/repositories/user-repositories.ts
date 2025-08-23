@@ -1,4 +1,4 @@
-import type { UserFields } from "../types/index.js";
+import type { UserFields } from "../types/fields.js";
 
 import User from "../db/models/user.js";
 
