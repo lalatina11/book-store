@@ -5,6 +5,9 @@ const envSchema = z.object({
   PORT: z.coerce.number().default(5000),
   DATABASE_URL: z.coerce.string().default("your_database_url"),
   SECRET_KEY: z.coerce.string().default("your_secret_key"),
+  CLOUDINARY_CLOUD_NAME: z.coerce.string().default("your_cloudinary_cloud_name"),
+  CLOUDINARY_API_KEY: z.coerce.string().default("your_cloudinary_api_key"),
+  CLOUDINARY_API_SECRET: z.coerce.string().default("your_cloudinary_api_secret"),
 });
 
 try {
