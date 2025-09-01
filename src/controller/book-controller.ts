@@ -21,9 +21,6 @@ const BookController = {
   create: async (req: Request, res: Response) => {
     try {
       const userId = (req as any).userId;
-      if (!userId) {
-        throw new Error("User does not exist");
-      }
       const body = req.body as BookFields;
       const image = req.files?.image;
       if (!image) {
