@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import expressFileUpload from "express-fileupload";
 import helmet from "helmet";
 import morgan from "morgan";
 
@@ -15,6 +16,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(expressFileUpload());
 
 app.use("/api/auth", runDB, AuthRouter);
 app.use("/api/book", runDB, BookRouter);
