@@ -11,11 +11,7 @@ import UserServices from "../services/user-services.js";
 const AuthController = {
   getCurrentUser: async (req: Request, res: Response) => {
     try {
-      const token = req.headers.token as string;
-      if (!token) {
-        throw new Error("Token are required");
-      }
-      const user = await AuthService.getCurrentUser(token);
+      const user = (req as any).user;
 
       res.status(200).json({ error: false, data: { user }, message: "Successfully Current User" });
     }
