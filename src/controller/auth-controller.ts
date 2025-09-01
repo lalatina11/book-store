@@ -4,7 +4,6 @@ import emailValidator from "email-validator";
 
 import type { UserFields } from "../types/fields.js";
 
-import { dbConnect } from "../db/index.js";
 import UserRepositories from "../repositories/user-repositories.js";
 import AuthService from "../services/auth-services.js";
 import UserServices from "../services/user-services.js";
@@ -12,7 +11,6 @@ import UserServices from "../services/user-services.js";
 const AuthController = {
   getCurrentUser: async (req: Request, res: Response) => {
     try {
-      await dbConnect();
       const token = req.headers.token as string;
       if (!token) {
         throw new Error("Token are required");
@@ -29,7 +27,6 @@ const AuthController = {
   },
   signUp: async (req: Request, res: Response) => {
     try {
-      await dbConnect();
       const { username, email, password } = await req.body as UserFields;
       if (!username && !password && !email) {
         throw new Error("Needs all required fields!");
@@ -85,7 +82,6 @@ const AuthController = {
   },
   signIn: async (req: Request, res: Response) => {
     try {
-      await dbConnect();
       const { identifier, password } = req.body as UserFields & { identifier: string };
       const user = await AuthService.checkCredentials({ identifier, password });
       const token = AuthService.generateToken(user._id.toString());

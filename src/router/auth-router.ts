@@ -1,14 +1,13 @@
-import express from 'express'
+import express from "express";
 
-import AuthController from '../controller/auth-controller.js'
+import AuthController from "../controller/auth-controller.js";
 
+const route = express.Router();
 
-const route = express.Router()
+route.get("/current-user", AuthController.getCurrentUser);
 
-route.get('/current-user', AuthController.getCurrentUser)
+route.post("/sign-up", AuthController.signUp);
 
-route.post('/sign-up', AuthController.signUp)
+route.post("/sign-in", AuthController.signIn);
 
-route.post('/sign-in', AuthController.signIn)
-
-export default route
+export default route;
